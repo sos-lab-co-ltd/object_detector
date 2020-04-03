@@ -1,0 +1,24 @@
+<launch>
+    <node pkg="object_detector" type="object_detector_node" name="object_detector_node" output="screen">
+        
+        <param name="serial_port_name" type="string" value="/dev/ttyUSB0"/>
+        <param name="frame_id" type="string" value="laser"/>
+        <param name="pub_topicname_lidar" type="string" value="scan"/>
+        <param name="pub_topicname_obj" type="string" value="obj"/>
+        
+        <param name="ref_save_time" value="2.0" type="double" />
+        <param name="rviz_scale" value="10.0" type="double" />
+        <param name="group_box_size_threshold" value="0.3" type="double" />
+        <param name="loop_hz" type="int" value="40"/>
+        <param name="rviz_pub_hz" type="int" value="20"/>
+        
+        <param name="max_distance" value="30.0" type="double" />
+        <param name="min_distance" value="0.1" type="double" />
+        <param name="min_thr_dist" value="0.06" type="double" />
+        <param name="max_thr_dist" value="0.2" type="double" />
+        <param name="filt_max_dist" value="20.0" type="double" />
+        <param name="filt_min_dist" value="1.0" type="double" />
+        <param name="filt_max_point_num" value="5" type="int" />
+        <param name="filt_min_point_num" value="1" type="int" />
+    </node>
+</launch>

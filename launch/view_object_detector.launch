@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find object_detector)/launch/object_detector.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find object_detector)/rviz/object_detector_config.rviz" />
+</launch>
