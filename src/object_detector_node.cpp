@@ -16,6 +16,8 @@ int main(int argc, char** argv)
     std::string frame_id = "laser_frame";
     std::string pub_topicname_lidar = "scan";
     std::string pub_topicname_obj = "obj";
+    std::string pub_topicname_obj_text = "obj_text";
+    std::string pub_topicname_obj_box = "obj_box";
 
     sensor_msgs::PointCloud cloud;
     sensor_msgs::PointCloud2 object_cloud;    
@@ -26,8 +28,10 @@ int main(int argc, char** argv)
 
     nh_priv.param("serial_port_name", serial_port_name, serial_port_name);
 	nh_priv.param("frame_id", frame_id, frame_id);
-	nh_priv.param("pub_topicname_lidar", pub_topicname_lidar, pub_topicname_lidar);
+	nh_priv.param("pub_topicname_lidar", pub_topicname_lidar, pub_topicname_lidar);   
     nh_priv.param("pub_topicname_obj", pub_topicname_obj, pub_topicname_obj);
+    nh_priv.param("pub_topicname_obj_text", pub_topicname_obj_text, pub_topicname_obj_text);
+    nh_priv.param("pub_topicname_obj_box", pub_topicname_obj_box, pub_topicname_obj_box);
 
     DRAW draw; //open drawing function
     OD obj_detect(serial_port_name,921600); //open gl and object detection
@@ -48,8 +52,8 @@ int main(int argc, char** argv)
 	nh_priv.param("filt_min_point_num", obj_detect.filt_min_point_num, obj_detect.filt_min_point_num);
 
     ros::Publisher data_pub = nh.advertise<sensor_msgs::LaserScan>(pub_topicname_lidar, 100);
-    ros::Publisher obj_text_pub = nh.advertise<visualization_msgs::Marker>( "obj_text", 0 );
-    ros::Publisher obj_box_pub = nh.advertise<visualization_msgs::Marker>( "obj_box", 0 );
+    ros::Publisher obj_text_pub = nh.advertise<visualization_msgs::Marker>( pub_topicname_obj_text, 0 );
+    ros::Publisher obj_box_pub = nh.advertise<visualization_msgs::Marker>( pub_topicname_obj_box, 0 );
     ros::Publisher cloud2_pub = nh.advertise<sensor_msgs::PointCloud2>(pub_topicname_obj, 50); 
 
     ros::Rate loop_rate(draw.loop_hz);
