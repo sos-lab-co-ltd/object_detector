@@ -5,6 +5,8 @@
         <param name="frame_id" type="string" value="laser"/>
         <param name="pub_topicname_lidar" type="string" value="scan"/>
         <param name="pub_topicname_obj" type="string" value="obj"/>
+        <param name="pub_topicname_obj_text" type="string" value="obj_text"/>
+        <param name="pub_topicname_obj_box" type="string" value="obj_box"/>
         
         <param name="ref_save_time" value="2.0" type="double" />
         <param name="rviz_scale" value="10.0" type="double" />
